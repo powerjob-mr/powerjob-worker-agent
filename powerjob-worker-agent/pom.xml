@@ -3,19 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>oh-my-scheduler</artifactId>
+        <artifactId>powerjob</artifactId>
         <groupId>com.github.kfcfans</groupId>
         <version>1.0.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>oh-my-scheduler-worker-agent</artifactId>
-    <version>2.0.0</version>
+    <artifactId>powerjob-worker-agent</artifactId>
+    <version>3.0.0</version>
     <packaging>jar</packaging>
 
 
     <properties>
-        <oms.worker.version>2.0.0</oms.worker.version>
+        <powerjob.worker.version>3.0.0</powerjob.worker.version>
         <logback.version>1.2.3</logback.version>
         <picocli.version>4.3.2</picocli.version>
 
@@ -26,8 +26,8 @@
 
         <dependency>
             <groupId>com.github.kfcfans</groupId>
-            <artifactId>oh-my-scheduler-worker</artifactId>
-            <version>${oms.worker.version}</version>
+            <artifactId>powerjob-worker</artifactId>
+            <version>${powerjob.worker.version}</version>
         </dependency>
 
         <!-- java cli 工具 -->
@@ -58,7 +58,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <configuration>
-                    <mainClass>com.github.kfcfans.oms.worker.MainApplication</mainClass>
+                    <mainClass>com.github.kfcfans.powerjob.worker.MainApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
