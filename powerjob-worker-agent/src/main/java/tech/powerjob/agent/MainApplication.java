@@ -1,8 +1,9 @@
-package com.github.kfcfans.powerjob.worker;
+package tech.powerjob.agent;
 
-import com.github.kfcfans.powerjob.common.RemoteConstant;
-import com.github.kfcfans.powerjob.worker.common.OhMyConfig;
-import com.github.kfcfans.powerjob.worker.common.constants.StoreStrategy;
+import tech.powerjob.common.RemoteConstant;
+import tech.powerjob.worker.OhMyWorker;
+import tech.powerjob.worker.common.OhMyConfig;
+import tech.powerjob.worker.common.constants.StoreStrategy;
 import com.google.common.base.Splitter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
