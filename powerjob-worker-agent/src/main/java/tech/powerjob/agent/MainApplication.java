@@ -1,8 +1,9 @@
-package com.github.kfcfans.powerjob.worker;
+package tech.powerjob.agent;
 
-import com.github.kfcfans.powerjob.common.RemoteConstant;
-import com.github.kfcfans.powerjob.worker.common.OhMyConfig;
-import com.github.kfcfans.powerjob.worker.common.constants.StoreStrategy;
+import tech.powerjob.common.RemoteConstant;
+import tech.powerjob.worker.PowerJobWorker;
+import tech.powerjob.worker.common.PowerJobWorkerConfig;
+import tech.powerjob.worker.common.constants.StoreStrategy;
 import com.google.common.base.Splitter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -17,7 +18,7 @@ import picocli.CommandLine.Option;
  * @since 2020/5/20
  */
 @Slf4j
-@Command(name = "OhMyAgent", mixinStandardHelpOptions = true, version = "3.4.7", description = "powerjob-worker agent")
+@Command(name = "PowerJobAgent", mixinStandardHelpOptions = true, version = "4.0.0", description = "powerjob-worker agent")
 public class MainApplication implements Runnable {
 
     @Option(names = {"-a", "--app"}, description = "worker-agent's name", required = true)
@@ -43,7 +44,7 @@ public class MainApplication implements Runnable {
     @Override
     public void run() {
 
-        OhMyConfig cfg = new OhMyConfig();
+        PowerJobWorkerConfig cfg = new PowerJobWorkerConfig();
         try {
 
             cfg.setAppName(appName);
@@ -52,12 +53,12 @@ public class MainApplication implements Runnable {
             cfg.setStoreStrategy(StoreStrategy.MEMORY.name().equals(storeStrategy) ? StoreStrategy.MEMORY : StoreStrategy.DISK);
             cfg.setMaxResultLength(length);
 
-            OhMyWorker ohMyWorker = new OhMyWorker();
-            ohMyWorker.setConfig(cfg);
+            PowerJobWorker worker = new PowerJobWorker();
+            worker.setConfig(cfg);
 
-            ohMyWorker.init();
+            worker.init();
         }catch (Exception e) {
-            log.error("[OhMyAgent] startup failed by config: {}.", cfg, e);
+            log.error("[PowerJobAgent] startup failed by config: {}.", cfg, e);
             ExceptionUtils.rethrow(e);
         }
     }
